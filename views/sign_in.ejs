@@ -1,0 +1,55 @@
+<%- include('auth_header') %>
+<div class = "page-container">
+     <div class="row">
+        <div class="col-md-4 offset-md-4 centered-box ">
+            <div class="d-flex justify-content-between">
+                <div class="" style="font-size: 20px;"> By ThousandLum</div>
+                <div class="text-right">
+                   <a href="/auth/signup" class="text-dark text-decoration-none m-3" style="font-size: 16px;">Sign up now</a>
+                </div>
+            </div>
+            <div class="my-3">
+                <!-- Add space here -->
+            </div>
+            <div class="row d-flex ">
+                <div class="col-lg-8">  
+                  <form action="/auth/signin" method="post">
+                    <!-- 2 column grid layout with text inputs for the first and last names -->
+                    <div class="row mt-5 " >
+                      <!-- student id input $student_id -->
+                      <div class="form-outline mb-4">
+                          <div class="form-outline">
+                              <label class="form-label ml-2" for="student_id">Student id</label>
+                              <input type="text" name="student_id" class="form-control " placeholder="Student id" style="width: 451px; height: 57px; border-radius: 10px; border-color: black;" />
+                          </div>
+                      </div>
+                    <!-- Password input $password-->
+                    <div class="form-outline mb-3" >
+                        <label class="form-label ml-2" for="password">Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="password" style="width: 451px; height: 57px; border-radius: 10px; border-color: black;" />
+                    </div> 
+                    </div>
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-block mt-4" style="background-color: #565959; width: 435px; height: 54px; font-size: 16px; border-radius: 10px; border-color: black;">
+                        Sign in
+                    </button> 
+                  </form>
+                </div>               
+            </div>  
+            <!-- <div class="text-right  mb-5">
+                <a href="" class=" text-right text-dark ml-auto mb-4 text-decoration-none">Forget Password</a>
+            </div> -->      
+    </div>
+</div>
+<style>
+    .centered-box {
+            align-items: center;
+            height: 500px;
+            width: 539px;
+            padding: 40px;
+            border: 1px solid black; /* Black border */
+            background-color: #f7f7f7; /* Light background */
+            border-radius: 30px;
+        }
+</style>
+<%- include('auth_footer') %>

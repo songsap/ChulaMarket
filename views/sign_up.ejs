@@ -1,0 +1,80 @@
+<%- include('auth_header') %>
+<div class = "page-container">
+     <div class="row">
+        <div class="col-md-4 offset-md-4 centered-box ">
+            <div class="d-flex justify-content-between">
+                <div class="" style="font-size: 20px;"> By ThousandLum</div>
+                <div class="text-right">
+                   <a href="/auth/signin" class="text-dark text-decoration-none m-3" style="font-size: 16px;">Sign in</a>
+                </div>
+            </div>
+            <div class="my-3">
+                <!-- Add space here -->
+            </div>
+            <div class="row d-flex mt-5 ">
+                <div class="col-lg-8">
+                    <form action="/auth/signup" method="post">
+                      <!-- 2 column grid layout with text inputs for the first and last names -->
+                      <div class="row">
+                        <!-- Name input $name -->
+                        <div class="form-outline mb-4">
+                            <div class="form-outline">
+                                <label class="form-label " style="text-align: left;" for="name">Student name</label>
+                                <input type="text" name="name" class="form-control" placeholder="Student name" style="width: 451px; height: 57px;border-radius: 10px; border-color: black;" />
+                            </div>
+                          </div>
+                        <!-- student id input $student_id -->
+                        <div class="form-outline mb-4">
+                            <div class="form-outline">
+                                <label class="form-label" for="student_id">Student id</label>
+                                <input type="text" name="student_id" class="form-control " placeholder="Student id" style="width: 451px; height: 57px;border-radius: 10px; border-color: black;" />
+                            </div>
+                        </div>
+                        <!-- Phone number input $phone_number-->
+                        <div class="form-outline mb-4">
+                          <div class="form-outline">
+                            <label class="form-label" for="phone_number">Telephone number</label>
+                            <input type="text" name="telephone" class="form-control"  placeholder="Telephone number" style="width: 451px; height: 57px;border-radius: 10px; border-color: black;"/>
+                          </div>
+                        </div>
+                      <!-- Email input $email -->
+                      <div class="form-outline mb-4">
+                        <label class="form-label" for="user_email">Email address</label>
+                        <input type="email" name="email" class="form-control" placeholder="Email" style="width: 451px; height: 57px;border-radius: 10px; border-color: black;"/>
+                      </div>
+                      <!-- Password input $password-->
+                      <div class="form-outline mb-4">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Password" style="width: 451px; height: 57px;border-radius: 10px; border-color: black;" />
+                      </div>
+                    </div>
+                      <!-- Checkbox -->
+                      <!-- <div class="form-check d-flex justify-content-center mb-4">
+                        <input class="form-check-input me-2" type="checkbox" value="" id="consent" checked />
+                        <label class="form-check-label" for="consent">
+                          ยอมรับเงื่อนไขการใช้งาน โครงการ Bulb ดิจิตอล
+                        </label>
+                      </div> -->
+                       <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary btn-block mt-3" style="background-color: #565959; width: 435px; height: 54px; font-size: 16px; border-radius: 10px; border-color: black;">
+                            Sign up
+                        </button> 
+                  </form>
+                </div>
+            </div>
+    </div>
+</div>
+<style>
+    .centered-box {
+            
+            align-items: center;
+            height: 800px;
+            width: 539px;
+            padding: 40px;
+            border: 1px solid black; /* Black border */
+            background-color: #f7f7f7; /* Light background */
+            border-radius: 40px;
+        }
+</style>
+
+<%- include('auth_footer') %>
