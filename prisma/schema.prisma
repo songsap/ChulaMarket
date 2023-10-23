@@ -18,11 +18,54 @@ model User{
   telephone     String
   email         String
   account       Account[]
+  address       Address[]
+  shop          Shop[]
 }
 
 model Account{
   id            Int     @id @default(autoincrement())
   student_id    String
   balance       Int
-  user          User      @relation(fields: [student_id],references: [student_id])
+  user          User    @relation(fields: [student_id],references: [student_id])
+  shop          Shop[]
 }
+
+model Address{
+  id            Int     @id @default(autoincrement())
+  student_id    String
+  address       String  
+  user          User    @relation(fields: [student_id],references: [student_id])
+}
+
+model Shop{
+  id            Int     @id @default(autoincrement())
+  student_id    String
+  account_id    Int
+  name          String
+  imageUrl      String
+  description   String
+  product       Product[]
+  user          User    @relation(fields: [student_id],references: [student_id])
+  account       Account @relation(fields: [account_id],references: [id])
+}
+
+model GroupProduct{
+  id            Int     @id @default(autoincrement())
+  name          String
+  product       Product[]
+}
+
+model Product{
+  id                Int     @id @default(autoincrement())
+  shop_id           Int     @unique
+  student_id        String
+  name              String
+  groupProduct_id   Int
+  imageUrl          String
+  price             String
+  amount            String
+  description       String
+  shop              Shop          @relation(fields: [shop_id],references: [id])
+  groupProduct      GroupProduct  @relation(fields: [groupProduct_id],references: [id])
+}
+

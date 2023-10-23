@@ -1,0 +1,35 @@
+<%- include('header') %>
+<div class="content">
+    <form action="/user/profile" method="post">
+        <div class="" style="font-size: 20px;">Profile</div>
+        <div class="mt-4 mb-2" style="font-size: 16px;">Student name</div>
+        
+        <input type="text" name="name" value="<%= user_data.name %>" class="form-control" placeholder="" style="height: 53px; border-radius: 10px; border-color: black;" />
+
+        <div class="mt-4 mb-2" style="font-size: 16px;">Student id</div>
+        
+        <input type="text" name="student_id" value="<%= user_data.student_id %>" class="form-control" placeholder="" style="height: 53px; border-radius: 10px; border-color: black;" />
+
+        <div class="mt-4 mb-2" style="font-size: 16px;">Password</div>
+        
+        <input type="text" name="password" value="<%= user_data.password %>" class="form-control" placeholder="" style="height: 53px; border-radius: 10px; border-color: black;" />
+
+        <div class="mt-4 mb-2" style="font-size: 16px;">Telephone number</div>
+        
+        <input type="text" name="telephone" value="<%= user_data.telephone %>" class="form-control" placeholder="" style="height: 53px; border-radius: 10px; border-color: black;" />
+
+        <div class="mt-4 mb-2" style="font-size: 16px;">Email</div>
+        
+        <input type="text" name="email" value="<%= user_data.email %>" class="form-control" placeholder="" style="height: 53px; border-radius: 10px; border-color: black;" />
+
+        <div class="mt-4 mb-2" style="font-size: 16px;">Address</div>
+
+        <textarea type="text" name="address" class="form-control" placeholder="" style="height: 91px; border-radius: 10px; border-color: black;" ><%= address %></textarea>
+    
+        <button type="submit" class="btn btn-primary  mt-4 " style="float: right; background-color: black;  font-size: 18px; border-radius: 10px; border-color: black;">
+            Save and Change
+        </button> 
+    </form>
+</div>
+
+

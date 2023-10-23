@@ -27,7 +27,6 @@ router.get('/signin',  (req,res) => {
 router.post('/signin', async (req,res) => {
   let student_id = req.body.student_id
   let password = req.body.password
-  console.log(student_id)
   try{
     let user = await prisma.user.findUnique({
       where : {
@@ -49,9 +48,7 @@ router.post('/signin', async (req,res) => {
     let token = jwt.sign({id : id},secretCode);
     req.session.token = token;
     req.session.name = name;
-    //console.log(req.session)
-    res.send('sign in success')
-    //res.redirect('/user/createuser')
+    res.redirect('/user/profile')
   } catch(err) {
     throw err
   }
@@ -62,7 +59,6 @@ router.get('/signup', (req,res) => {
 })
 
 router.post('/signup', async (req,res) => {
-  //let data = req.body
   let student_id = req.body.student_id
   let password = req.body.password
   let user_name = req.body.name
@@ -96,16 +92,39 @@ router.post('/signup', async (req,res) => {
     } catch(err) {
       throw err
     }
+    try{
+      let address = await prisma.address.create({
+        data : {
+          student_id : user.student_id,
+          address : "your address"
+        }
+      })
+      if (!address) {
+        res.status(401).send('Address not created');
+        return;
+      }
+    } catch(err) {
+      throw err
+    }
     let id = user.id
     let name = user.name
     let token = jwt.sign({id : id},secretCode);
     req.session.token = token;
     req.session.name = name;
+    req.session.balance = account.balance;
     res.send('sign up success')
   } catch(err) {
     throw err
   }
 })
 
+const isSignin = (req,res,next) => {
+  if(req.session.token != undefined){
+    next(); //แปลว่าได้มีการ signin แล้ว
+  }
+  else{
+    res.redirect('/auth/signin');
+  }
+}
 
-module.exports = router;
+module.exports = [router,isSignin];
