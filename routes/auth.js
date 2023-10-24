@@ -111,7 +111,6 @@ router.post('/signup', async (req,res) => {
     let token = jwt.sign({id : id},secretCode);
     req.session.token = token;
     req.session.name = name;
-    req.session.balance = account.balance;
     res.send('sign up success')
   } catch(err) {
     throw err

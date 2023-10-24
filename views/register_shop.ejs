@@ -1,0 +1,28 @@
+<%- include('header') %>
+
+<div class="content text-center">
+    <form method="post" enctype="multipart/form-data">
+        <div class="" style="font-size: 30px;">Register Shop</div>
+
+        <label for="imageInput" class="upload-icon mt-4" >
+            <i class="fas fa-upload" >
+                <span class="material-symbols-outlined mt-5" style="font-size:320px;">group_add</span>
+            </i> <!-- You can use any icon library or your own custom icon -->
+        </label>
+        <div class="mb-2 mt-2">
+            <img src="../images/shopImage/<%= shop_data.imageUrl %>" width="200px">
+        </div>
+        <input type="file" id="imageInput" name="img" accept="image/*" class="hidden-file-input">
+
+        <div class="mt-4 mb-2 ml-2" style=" font-size: 25px; text-align: left;">Shop Name</div>
+        <input type="text" value="<%= shop_data.name%>" name="name" class="form-control" placeholder="" style="height: 70px; border-radius: 10px; border-color: black;" />
+
+        <div class="mt-4 mb-2 ml-2" style="font-size: 25px; text-align: left;">Shop Detail</div>
+        
+        <textarea name="description" class="form-control" placeholder="" style="height: 140px; border-radius: 10px; border-color: black;" ><%= shop_data.description %></textarea>
+    
+        <button type="submit" class="btn btn-primary mt-4 px-4 py-2 " style="float: right; background-color: black;  font-size: 18px; border-radius: 10px; border-color: black;" onfocus="this.blur()">
+            Register
+        </button> 
+    </form>
+</div>
