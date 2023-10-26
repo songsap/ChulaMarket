@@ -48,7 +48,7 @@ router.post('/signin', async (req,res) => {
     let token = jwt.sign({id : id},secretCode);
     req.session.token = token;
     req.session.name = name;
-    res.redirect('/user/profile')
+    res.redirect('/home/')
   } catch(err) {
     throw err
   }
@@ -111,7 +111,8 @@ router.post('/signup', async (req,res) => {
     let token = jwt.sign({id : id},secretCode);
     req.session.token = token;
     req.session.name = name;
-    res.send('sign up success')
+    res.redirect('/home/')
+    //res.send('sign up success')
   } catch(err) {
     throw err
   }

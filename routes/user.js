@@ -73,13 +73,4 @@ router.post('/profile',isSignin, async (req,res) => {
         throw err
     }
 })
-
-router.get('/createuser',async (req,res) => {
-    //let data = req.body
-    //console.log(req.session
-    res.render('index', { title: 'Express' });
-    let x = await prisma.user.findMany()
-    console.log(x)
-})
-
 module.exports = router;

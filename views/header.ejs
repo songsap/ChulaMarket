@@ -9,7 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <style>
-        
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
+        *{
+            font-family: 'Prompt';
+        }
         body, html {
             margin: 0;
             padding: 0;
@@ -68,6 +71,10 @@
         .hidden-file-input {
             display: none;
         }
+        .material-icons {
+            display : inline-flex;
+            vertical-align : text-bottom;
+        }
     </style>
 </head>
 <body>   
@@ -83,25 +90,25 @@
                 <div class="col text-center my-4 " >
                     <ul class="navbar-nav mx-5 pt-2 " style="font-size: 1rem;" >
                         <li class="nav-item mx-5">
-                            <a href="" class="nav-link text-dark ">Home</a>
+                            <a href="/home/" class="nav-link text-dark ">Home</a>
                         </li>
                         <li class="nav-item mx-5">
                             <a href="/user/profile" class="nav-link text-dark">Profile</a>
                         </li>
                         <li class="nav-item mx-5">
-                            <a href="" class="nav-link text-dark">Shop</a>
+                            <a href="/shop" class="nav-link text-dark">Shop</a>
                         </li>
                         <li class="nav-item mx-5">
                             <a href="/yourshop/yourShop" class="nav-link text-dark">Your Shop</a>
                         </li>
                         <li class="nav-item mx-5">
-                            <a href="/yourshop/editShop" class="nav-link text-dark">Your Order</a>
+                            <a href="" class="nav-link text-dark">Order</a>
                         </li>
                         <li class="nav-item mx-4 pl-5 d-flex ">
                             <!-- ดึงของมูลbulb -->
                             <!-- ผมเขียน10000ไว้ก่อนเพราะถึงcommentมันก็errอยู่ดี -->
                             
-                            <div class="text-dark " style="font-size: 26px;">10000</div>
+                            <div class="text-dark " style="font-size: 26px;"><%= balance %></div>
                             <span class="material-symbols-outlined">
                                 lightbulb
                             </span>

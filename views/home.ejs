@@ -1,0 +1,28 @@
+<%- include('header') %>
+<div style="padding-top: 200px;">
+    <div class="row row-cols-5 row-cols-md-4 g-2"
+        style="height: 100%; margin: 50px 130px; justify-content:space-between; grid-gap: 30px; position: relative;">
+            <% product_data.forEach((product) => { %>
+                <div class="card h-100 w-290 " style="width: 290px; padding: 5px; z-index: 1; border: 0;">
+                    <!-- Product img -->
+                    <div style=" justify-self: center;">
+                        <img src="../images/productImage/<%= product.imageUrl %>" style="height:230px; max-height: 290px;width: 100%; border-radius: 12px; background-size: cover;" alt="">
+                    </div>
+                    <!-- Shop name (link)-->
+                    <h2 class="card-title">
+                        <a href='' style="font-size: 20px;text-decoration: none;" class="text-dark"><%= product.name %></a>
+                    </h2>
+                    <!-- Price -->
+                    <h3 style="font-size: 20px;">
+                        <%= product.price %>
+                        <span class="material-symbols-outlined custom-icon " style="font-size: 18px;"> 
+                            lightbulb
+                        </span>
+                    </h3>
+                    <div>               
+                        <button type="submit" class="btn btn-primary btn-sm px-3" style="background-color: #565859; border-color: #565859; border-radius: 5px; font-size: 14px;" onfocus="this.blur()">Buy</button>
+                    </div> 
+                </div> 
+            <% }) %> 
+    </div>
+</div>

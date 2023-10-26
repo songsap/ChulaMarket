@@ -1,0 +1,42 @@
+<%- include('header') %>
+<div class="content text-center" style="margin-bottom: 0px;">
+    <form method="post" enctype="multipart/form-data">
+        <div class="" style="font-size: 30px;">Add Product</div>
+        <!-- product name -->
+        <div class="mt-4 mb-2 ml-2" style=" font-size: 25px; text-align: left;">Product Name</div>
+        <input type="text" name="name" value="<%= product_data.name %>" class="form-control" placeholder="" style="height: 80px; border-radius: 10px; border-color: black;" />
+        <!-- Product Category -->
+        <div class="mt-4 mb-2 ml-2" style="font-size: 25px; text-align: left;">Product Category</div>
+        <select id="Product Category" name="groupProduct_id" class="form-control" style="font-size: 25px; height: 80px; border-radius: 10px; border-color: black;" >
+            <% groupProduct_data.forEach((groupProduct) => { %>
+                <option value="<%= groupProduct.id %>" class="" style=" font-size: 25px;height: 80px; border-radius: 10px; border-color: black;"
+                    <% if(product_data.group_groupProduct_id == groupProduct.id) { %>
+                        selected
+                    <% } %> 
+                >
+                <%= groupProduct.name %>
+                </option>
+            <% }) %>
+        </select>
+        <!-- Description -->
+        <div class="mt-4 mb-2 ml-2" style=" font-size: 25px; text-align: left;">Description</div>
+        <input type="text" name="description" value="<%= product_data.description %>" class="form-control"  style="height: 80px; border-radius: 10px; border-color: black;" />
+        <!-- Prize -->
+        <div class="mt-4 mb-2 ml-2" style=" font-size: 25px; text-align: left;">Price</div>
+        <input type="text" name="price" value="<%= product_data.price %>" class="form-control"  style="height: 80px; border-radius: 10px; border-color: black;" />
+        <!-- Amount -->
+        <div class="mt-4 mb-2 ml-2" style=" font-size: 25px; text-align: left;">Amount</div>
+        <input type="text" name="amount" value="<%= product_data.amount %>" class="form-control"  style="height: 80px; border-radius: 10px;  border-color: black;" />
+        <!-- Product Image -->
+        <div class="mt-4 mb-2 ml-2" style=" font-size: 25px; text-align: left;">Product Image</div>
+        <div class="form-control" style="text-align: left; height: 80px; border-radius: 10px; border-color: black;"> 
+            <label for="imageInput" class="btn btn-primary m-3 px-5 py-1" style="background-color: #5658599C; border-radius: 20px; font-size: 20px; border-color: #5658599C;"> Upload Image</label>
+            <input type="file" id="imageInput" value="<%= product_data.imageUrl %>" name="img" accept="image/*" class="hidden-file-input">
+            <span id="selectedFileName" style="font-size: 22px;"></span>
+        </div>
+        <button type="submit" class="btn btn-primary py-3 px-5 mt-5"
+            style="margin-bottom: 100px; background-color: black;  font-size: 18px; border-radius: 10px; border-color: black; float: right;" onfocus="this.blur()">
+                Add
+        </button>
+    </form>
+</div>

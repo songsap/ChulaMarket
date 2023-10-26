@@ -12,7 +12,7 @@
         <div class="mb-2 mt-2">
             <img src="../images/shopImage/<%= shop_data.imageUrl %>" width="200px">
         </div>
-        <input type="file" id="imageInput" name="img" accept="image/*" class="hidden-file-input">
+        <input value="<%= shop_data.imageUrl %>" type="file" id="imageInput" name="img" accept="image/*" class="hidden-file-input">
 
         <div class="mt-4 mb-2 ml-2" style=" font-size: 25px; text-align: left;">Shop Name</div>
         <input type="text" value="<%= shop_data.name%>" name="name" class="form-control" placeholder="" style="height: 70px; border-radius: 10px; border-color: black;" />

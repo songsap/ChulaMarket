@@ -57,7 +57,7 @@ model GroupProduct{
 
 model Product{
   id                Int     @id @default(autoincrement())
-  shop_id           Int     @unique
+  shop_id           Int     
   student_id        String
   name              String
   groupProduct_id   Int
@@ -67,5 +67,24 @@ model Product{
   description       String
   shop              Shop          @relation(fields: [shop_id],references: [id])
   groupProduct      GroupProduct  @relation(fields: [groupProduct_id],references: [id])
+}
+
+model Order{
+  id                      Int     @id @default(autoincrement())
+  student_id_seller       String
+  shop_id                 Int
+  product_id              String
+  student_id_buyer        String
+  address_buyer           String
+  status                  String
+  track                   String
+  shippingCompany_id      Int
+  groupShippingCompany    GroupShippingCompany  @relation(fields: [shippingCompany_id],references: [id])
+}
+
+model GroupShippingCompany{
+  id                      Int     @id @default(autoincrement())
+  name                    String
+  order                   Order[]
 }
 
