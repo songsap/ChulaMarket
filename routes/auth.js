@@ -21,11 +21,8 @@ router.use((req,res,next) => {
 })
 
 router.get('/signin',  (req,res) => {
-  let message = req.query.message
-  if(message == undefined){
-    message = ""
-  }
-  res.render('sign_in',{message : message})
+  let alertMessage = req.flash('error')
+  res.render('sign_in',{alertMessage : alertMessage[0]})
 })
 
 router.post('/signin', async (req,res) => {
@@ -38,12 +35,14 @@ router.post('/signin', async (req,res) => {
       }
     })
     if (!user) {
-      res.redirect(`/auth/signin?message=${"User not found"}`)
+      req.flash('error', 'User not found');
+      res.redirect(`/auth/signin`)
       return;
     }
     if(user.password != password){
       //res.status(401).send('Username or password invalid');
-      res.redirect(`/auth/signin?message=${"Student id or password invalid"}`)
+      req.flash('error', 'Student id or password invalid');
+      res.redirect(`/auth/signin`)
       return;
     }
     let id = user.id

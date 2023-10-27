@@ -76,6 +76,7 @@ model Order{
   product_id              String
   student_id_buyer        String
   address_buyer           String
+  totalprice              Int
   status                  String
   track                   String
   shippingCompany_id      Int

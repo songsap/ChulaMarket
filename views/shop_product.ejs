@@ -41,9 +41,9 @@
                         <%= product.description %>
                 </span>
                 <div>
-                    <button type="submit" class="btn btn-primary btn-sm px-3"
-                        style="background-color: #565859; border-color: #565859; border-radius: 5px; font-size: 14px;"
-                        onfocus="this.blur()">Buy</button>
+                    <a href="/product/productdetail/<%= product.id %>" class="btn btn-primary btn-sm px-3" style="background-color: #565859; border-color: #565859; border-radius: 5px; font-size: 14px;" onfocus="this.blur()">
+                        Buy
+                    </a>
                 </div>
             </div>
             <% }) %>

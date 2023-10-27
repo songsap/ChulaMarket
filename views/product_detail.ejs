@@ -1,13 +1,21 @@
 <%- include('header') %>
-
 <div class="content " style="margin-bottom: 0px;">
+    <% if (alertMessage) { %>
+        <div class="alert alert-danger text-center">
+            <%= alertMessage %>
+        </div>
+    <% } %>
+    <% if (warningMessage) { %>
+        <div class="alert alert-warning text-center">
+            <%= warningMessage %>
+        </div>
+    <% } %>
     <div class="row">
         <div class="col-md-6">
             <!-- img -->
             <img src="/images/productImage/<%= product_data.imageUrl %>" alt="" style="max-width: 100%; max-height: 100%; border-radius: 10px;"/>
         </div>
         <div class="col-md-6">
-            
             <!-- product name -->
             <div class="mx-4 px-3 py-2 " style="font-size: 40px; border-bottom: 2px solid black;">
                 <%= product_data.name %>
@@ -37,7 +45,7 @@
                 <%= product_data.amount %> left
             </div>
             <form action="" method="post" class="d-flex">
-                <input class="mt-4 ml-5 p-2 px-3" style="border:2px solid black;;font-size: 35px;border-radius: 10px; max-width: 60px;" value="1">
+                <input name="buyAmount" class="mt-4 ml-5 p-2 px-3" style="border:2px solid black;;font-size: 35px;border-radius: 10px; max-width: 60px;" value="1">
                 <button type="submit" class="btn btn-primary mt-4 mx-4" style=" background-color: #565859;  font-size: 35px; border-radius: 10px; border-color: #565859;" onfocus="this.blur()">
                     BUY
                 </button> 
