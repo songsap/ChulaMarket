@@ -30,6 +30,11 @@
                     </div> 
                     </div>
                     <!-- Submit button -->
+                    <% if(message != ""){ %>
+                    <div class="form-outline mb-3">
+                        <label class="form-label ml-2 text-align:center"><%= message %></label>
+                    </div>
+                    <% } %>
                     <button type="submit" class="btn btn-primary btn-block mt-4" style="background-color: #565959; width: 435px; height: 54px; font-size: 16px; border-radius: 10px; border-color: black;">
                         Sign in
                     </button> 

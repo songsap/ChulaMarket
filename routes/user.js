@@ -65,7 +65,7 @@ router.post('/profile',isSignin, async (req,res) => {
                 id : address.id
             },
             data : {
-                address : req.body.address
+                address : req.body.address 
             }
         })
         res.redirect('/user/profile')

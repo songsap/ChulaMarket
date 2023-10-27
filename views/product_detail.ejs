@@ -1,0 +1,50 @@
+<%- include('header') %>
+
+<div class="content " style="margin-bottom: 0px;">
+    <div class="row">
+        <div class="col-md-6">
+            <!-- img -->
+            <img src="/images/productImage/<%= product_data.imageUrl %>" alt="" style="max-width: 100%; max-height: 100%; border-radius: 10px;"/>
+        </div>
+        <div class="col-md-6">
+            
+            <!-- product name -->
+            <div class="mx-4 px-3 py-2 " style="font-size: 40px; border-bottom: 2px solid black;">
+                <%= product_data.name %>
+            </div>
+            <!-- Shop Name -->
+            <div class="mx-4 px-3 py-2 " style="font-size: 25px;">
+                <span style="padding-bottom: 5px;"><%= shop_data.name %></span>
+            </div>
+            <!-- Description -->
+            <div class="mx-4 px-3 pt-2" style="font-size: 25px; margin-left: 30px;">
+                Description
+            </div>
+            <div class="mx-4 px-3 py-2" style="font-size: 20px; max-width: 100%; height: auto; max-height: 100px; overflow: hidden; padding: 10px;">
+                <textarea name="" id="" cols="30" rows="10" style="width: 100%; height: 100%; border: none; resize: none; overflow: hidden; white-space: pre-wrap;" onfocus="this.blur()"><%= product_data.description %></textarea>
+            </div>
+            <!-- price -->
+            <div class="mx-4 py-2" style="font-size: 50px; ">
+                <div>
+                    <span><%= product_data.price %></span>
+                    <span class="material-symbols-outlined mx-2 custom-icon" style="font-size: 55px;">
+                        lightbulb
+                    </span>
+                </div>
+            </div>
+            <!-- Amount -->
+            <div class="" style="font-size: 25px; margin-left: 30px;">
+                <%= product_data.amount %> left
+            </div>
+            <form action="" method="post" class="d-flex">
+                <input class="mt-4 ml-5 p-2 px-3" style="border:2px solid black;;font-size: 35px;border-radius: 10px; max-width: 60px;" value="1">
+                <button type="submit" class="btn btn-primary mt-4 mx-4" style=" background-color: #565859;  font-size: 35px; border-radius: 10px; border-color: #565859;" onfocus="this.blur()">
+                    BUY
+                </button> 
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<%- include('footer') %>

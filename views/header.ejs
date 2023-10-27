@@ -83,37 +83,56 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- brand -->
-                <div class="col">
+                <div class="col-md-2">
                     <div class="mx-4 my-3 navbar-brand " style="font-size: 38px; font-weight: 900;">ChulaMarket</div>
                 </div>
                 <!-- Menu -->
-                <div class="col text-center my-4 " >
-                    <ul class="navbar-nav mx-5 pt-2 " style="font-size: 1rem;" >
-                        <li class="nav-item mx-5">
-                            <a href="/home/" class="nav-link text-dark ">Home</a>
-                        </li>
-                        <li class="nav-item mx-5">
-                            <a href="/user/profile" class="nav-link text-dark">Profile</a>
-                        </li>
-                        <li class="nav-item mx-5">
-                            <a href="/shop" class="nav-link text-dark">Shop</a>
-                        </li>
-                        <li class="nav-item mx-5">
-                            <a href="/yourshop/yourShop" class="nav-link text-dark">Your Shop</a>
-                        </li>
-                        <li class="nav-item mx-5">
-                            <a href="" class="nav-link text-dark">Order</a>
-                        </li>
-                        <li class="nav-item mx-4 pl-5 d-flex ">
-                            <!-- ดึงของมูลbulb -->
-                            <!-- ผมเขียน10000ไว้ก่อนเพราะถึงcommentมันก็errอยู่ดี -->
-                            
-                            <div class="text-dark " style="font-size: 26px;"><%= balance %></div>
-                            <span class="material-symbols-outlined">
-                                lightbulb
-                            </span>
-                        </li>
+                <div class="col text-center my-8 pt-4 col-md-8 " >
+                    <ul class="navbar-nav mx-4 pt-2 " style="font-size: 1rem;" >
+                        <div class="row">
+                            <div class="col-md-2 ">
+                                <li class="nav-item mx-5">
+                                    <a href="/home/" class="nav-link text-dark ">Home</a>
+                                </li>
+                            </div>
+                            <div class="col-md-2 ">
+                                <li class="nav-item mx-5">
+                                    <a href="/user/profile" class="nav-link text-dark">Profile</a>
+                                </li>
+                            </div>
+                            <div class="col-md-2 ">
+                                <li class="nav-item mx-5">
+                                    <a href="/shop/" class="nav-link text-dark">Shop</a>
+                                </li>
+                            </div>
+                            <div class="col-md-2 ">
+                                <li class="nav-item mx-4">
+                                    <a href="/yourshop/yourShop" class="nav-link text-dark">Your Shop</a>
+                                </li>
+                            </div>
+                            <div class="col-md-2 ">
+                                <li class="nav-item mx-5">
+                                    <a href="" class="nav-link text-dark">Order</a>
+                                </li>
+                            </div>
+                            <div class="col-md-2 ">
+                                <li class="nav-item mx-5 pl-5 d-flex ">
+                                    <!-- ดึงของมูลbulb -->
+                                    <!-- ผมเขียน10000ไว้ก่อนเพราะถึงcommentมันก็errอยู่ดี -->
+                                    
+                                    <div class="text-dark " style="font-size: 26px;"><%= balance %></div>
+                                    <span class="material-symbols-outlined">
+                                        lightbulb
+                                    </span>
+                                </li>
+                            </div>
+                        </div>
                     </ul>
+                </div>
+                <div class="col text-center my-8 pt-2 col-md-2 ">
+                    <a href="/auth/logout" class="btn btn-primary mt-4" style=" background-color: #565859;  font-size: 18px; border-radius: 10px; border-color: #565859;" onfocus="this.blur()">
+                        Logout
+                    </a> 
                 </div>
             </div>
         </div>

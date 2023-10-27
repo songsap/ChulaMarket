@@ -1,60 +1,70 @@
 <%- include('header') %>
 <div style="padding-top: 150px;">
-    <h1 class="fw-bold mb-5" style="justify-content: center; margin-top: 100px; text-align: center;"><%= shop_data.name %></h1>
-    <div class="d-flex flex-row mb-3" style="justify-content: center; gap: 40px;" >
+    <h1 class="fw-bold mb-5" style="justify-content: center; margin-top: 100px; text-align: center;">
+        <%= shop_data.name %>
+    </h1>
+    <div class="d-flex flex-row mb-3" style="justify-content: center; gap: 40px;">
         <a href="/yourshop/editShop">
-            <button type="button" class="btn btn-primary py-2" 
-                style="padding-left: 30px;padding-right: 30px; background-color: #565859;  font-size: 18px; border-radius: 10px; border-color: #565859; float: right;" onfocus="this.blur()">
+            <button type="button" class="btn btn-primary py-2"
+                style="padding-left: 30px;padding-right: 30px; background-color: #565859;  font-size: 18px; border-radius: 10px; border-color: #565859; float: right;"
+                onfocus="this.blur()">
                 Edit shop
             </button>
         </a>
         <a href="/yourshop/addproduct">
-            <button type="button" class="btn btn-primary py-2" 
-                style="padding-left: 30px;padding-right: 30px; background-color: #565859;  font-size: 18px; border-radius: 10px; border-color: #565859; float: right;" onfocus="this.blur()">
+            <button type="button" class="btn btn-primary py-2"
+                style="padding-left: 30px;padding-right: 30px; background-color: #565859;  font-size: 18px; border-radius: 10px; border-color: #565859; float: right;"
+                onfocus="this.blur()">
                 Add Product
             </button>
         </a>
         <a href="">
-            <button type="button" class="btn btn-primary py-2" 
-                style="padding-left: 30px;padding-right: 30px; background-color: #565859;  font-size: 18px; border-radius: 10px; border-color: #565859; float: right;" onfocus="this.blur()">
+            <button type="button" class="btn btn-primary py-2"
+                style="padding-left: 30px;padding-right: 30px; background-color: #565859;  font-size: 18px; border-radius: 10px; border-color: #565859; float: right;"
+                onfocus="this.blur()">
                 Shop Order
             </button>
         </a>
     </div>
-    <div class="row row-cols-5 row-cols-md-4 g-2"
-        style="height: 100%; margin: 50px 130px; justify-content:space-between; grid-gap: 30px; position: relative;">
-        <% product_data.forEach((product) => { %>
+
+    <div class="row row-cols-4 row-cols-md-4 g-2 "
+        style="height: 100%; margin: 100px 150px; grid-gap: 194px; position: relative;">
+        <% product_data.forEach((product)=> { %>
             <div class="card h-100 w-290 " style="width: 290px; padding: 5px; z-index: 1; border: 0;">
                 <!-- Product img -->
                 <div style=" justify-self: center;">
-                    <img src="../images/productImage/<%= product.imageUrl %>" style="height:230px; max-height: 290px;width: 100%; border-radius: 12px; background-size: cover;" alt="">
+                    <img src="../images/productImage/<%= product.imageUrl %>"
+                        style="height:230px; max-height: 290px;width: 100%; border-radius: 12px; background-size: cover;"
+                        alt="">
                 </div>
-                    <!-- set link for detail at ../product/{productID}-->
-                    <h3 class="card-title fw-bold font-size: 20px; mt-2">
-                        <%= product.name %>
-                    </h3>
+                <!-- set link for detail at ../product/{productID}-->
+                <h3 class="card-title fw-bold font-size: 20px; mt-2">
+                    <%= product.name %>
+                </h3>
 
-                    <h3 style="font-size: 20px;">
-                        <%= product.price %> 
+                <h3 style="font-size: 20px;">
+                    <%= product.price %>
                         <span class="material-symbols-outlined" style="font-size: 18px;">
                             lightbulb
                         </span>
-                    </p>
-                    <p style="font-size: 16px;">
-                        <span>Description:</span>
-                        <span class="material-symbols-outlined custom-icon" style="font-size: 16px;">
-                            <%= product.description %>
-                        </span>
-                    </p>
-                    <div>
-                        <a href="/yourshop/editProduct/<%= product.id %>" class="btn btn-secondary btn-sm px-3">
-                            Edit
-                        </a>               
-                        <a href="/yourshop/deleteProduct/<%= product.id %>" class="btn btn-danger btn-sm px-3" onclick="return confirm('Confirm Delete')">
-                            Delete
-                        </a>
-                    </div>  
+                        </p>
+                        <p style="font-size: 16px;">
+                            <span>Description:</span>
+                            <span class="material-symbols-outlined custom-icon" style="font-size: 16px;">
+                                <%= product.description %>
+                            </span>
+                        </p>
+                        <div>
+                            <a href="/yourshop/editProduct/<%= product.id %>" class="btn btn-secondary btn-sm px-3">
+                                Edit
+                            </a>
+                            <a href="/yourshop/deleteProduct/<%= product.id %>" class="btn btn-danger btn-sm px-3"
+                                onclick="return confirm('Confirm Delete')">
+                                Delete
+                            </a>
+                        </div>
             </div>
-            <% }) %>
+        <% }) %>
     </div>
 </div>
+<%- include('footer') %>

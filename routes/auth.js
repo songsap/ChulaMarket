@@ -21,7 +21,11 @@ router.use((req,res,next) => {
 })
 
 router.get('/signin',  (req,res) => {
-  res.render('sign_in')
+  let message = req.query.message
+  if(message == undefined){
+    message = ""
+  }
+  res.render('sign_in',{message : message})
 })
 
 router.post('/signin', async (req,res) => {
@@ -34,13 +38,12 @@ router.post('/signin', async (req,res) => {
       }
     })
     if (!user) {
-      res.status(401).send('User not found');
+      res.redirect(`/auth/signin?message=${"User not found"}`)
       return;
     }
-
     if(user.password != password){
       //res.status(401).send('Username or password invalid');
-      res.redirect('/auth/signin')
+      res.redirect(`/auth/signin?message=${"Student id or password invalid"}`)
       return;
     }
     let id = user.id
@@ -126,5 +129,10 @@ const isSignin = (req,res,next) => {
     res.redirect('/auth/signin');
   }
 }
+
+router.get('/logout',isSignin, async(req,res) => {
+  req.session.destroy();
+  res.redirect('/auth/signin')
+})
 
 module.exports = [router,isSignin];

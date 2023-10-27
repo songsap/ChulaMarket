@@ -20,7 +20,13 @@ router.get('/',isSignin, async (req,res) => {
             student_id : student_id
         }
     })
-    let product = await prisma.product.findMany()
+    let product = await prisma.product.findMany({
+        where : {
+            student_id : {
+                not : student_id
+            }
+        }
+    })
     res.render('home',{product_data : product,balance : account.balance})
 })
 
