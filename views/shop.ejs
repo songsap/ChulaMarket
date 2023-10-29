@@ -1,6 +1,19 @@
 <%- include('header') %>
-<div style="padding-top: 50px;">
-    <h1 class="fw-bold mb-5" style="justify-content: center; margin-top: 100px; text-align: center; padding-bottom: 50px;">Shop</h1>
+<div style="padding-top: 100px;">
+    <div>
+        <h1 class="fw-bold mb-5" style="justify-content: center; margin-top: 100px; text-align: center; "><b>Shop</b></h1>
+    </div>
+    <!-- TA change here -->
+    <div class="row justify-content-center">
+        <div class="d-flex flex-row mb-3" style="justify-content: center; gap: 40px; width: 100%;">
+            <form class="d-flex" method="get" action="/shop/">
+                <input name="search" type="text" class="form-control" placeholder="Search" style="width: 400px; height: 100%;">
+                <button type="submit" class="btn btn-outline-info" style="width: 100px; ; border-radius: 10px; margin-left: 10px;">Search</button>
+            </form>
+        </div>
+    </div>
+    <!-- END  -->
+
     <div class="row row-cols-5 row-cols-md-4 g-2"
         style="height: 100%; margin: 50px 130px; justify-content:left; grid-gap: 12.5%; position: relative;">
         <% shop_data.forEach((shop) =>  { %>

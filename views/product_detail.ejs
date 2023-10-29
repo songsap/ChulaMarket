@@ -10,6 +10,11 @@
             <%= warningMessage %>
         </div>
     <% } %>
+    <% if (successMessage) { %>
+        <div class="alert alert-success text-center">
+            <%= successMessage %>
+        </div>
+    <% } %>
     <div class="row">
         <div class="col-md-6">
             <!-- img -->
@@ -22,7 +27,9 @@
             </div>
             <!-- Shop Name -->
             <div class="mx-4 px-3 py-2 " style="font-size: 25px;">
-                <span style="padding-bottom: 5px;"><%= shop_data.name %></span>
+                <span style="padding-bottom: 5px;">
+                    <%= shop_data.name %>
+                </span>
             </div>
             <!-- Description -->
             <div class="mx-4 px-3 pt-2" style="font-size: 25px; margin-left: 30px;">
@@ -33,20 +40,22 @@
             </div>
             <!-- price -->
             <div class="mx-4 py-2" style="font-size: 50px; ">
-                <div>
-                    <span><%= product_data.price %></span>
-                    <span class="material-symbols-outlined mx-2 custom-icon" style="font-size: 55px;">
+                <div class="pl-3">
+                    <span>
+                        <%= product_data.price %>
+                    </span>
+                    <span class="material-symbols-outlined mx-2 custom-icon" style="font-size: 45px;">
                         lightbulb
                     </span>
                 </div>
             </div>
             <!-- Amount -->
-            <div class="" style="font-size: 25px; margin-left: 30px;">
+            <div class="" style="font-size: 25px; margin-left: 40px;">
                 <%= product_data.amount %> left
             </div>
-            <form action="" method="post" class="d-flex">
-                <input name="buyAmount" class="mt-4 ml-5 p-2 px-3" style="border:2px solid black;;font-size: 35px;border-radius: 10px; max-width: 60px;" value="1">
-                <button type="submit" class="btn btn-primary mt-4 mx-4" style=" background-color: #565859;  font-size: 35px; border-radius: 10px; border-color: #565859;" onfocus="this.blur()">
+            <form action="/product/productdetail/<%= product_data.id %>" method="post" class="d-flex">
+                <input name="buyAmount" class="mt-4 ml-5 p-2 px-3" style="border:2px solid black;;font-size: 25px;border-radius: 10px; max-width: 120px;" value="1">
+                <button type="submit" class="btn btn-primary mt-4 mx-4 px-4" style=" background-color: #565859;  font-size: 25px; border-radius: 10px; border-color: #565859; " onfocus="this.blur()">
                     BUY
                 </button> 
             </form>

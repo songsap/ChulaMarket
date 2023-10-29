@@ -20,14 +20,75 @@ router.get('/',isSignin, async (req,res) => {
             student_id : student_id
         }
     })
-    let product = await prisma.product.findMany({
-        where : {
-            student_id : {
-                not : student_id
+    console.log(req.query)
+    let search = req.query.search
+    let searchGroupProduct = req.query.groupProduct_id
+    let searchGroupProduct_name
+    if(searchGroupProduct){
+        searchGroupProduct_name = await prisma.groupProduct.findFirst({
+            where : {
+                id : parseInt(searchGroupProduct)
             }
+        })
+    }
+    let product
+    if(searchGroupProduct){
+        if(search == "" && searchGroupProduct_name.name == "all product"){
+            product = await prisma.product.findMany({
+                where : {
+                    student_id : {
+                        not : student_id
+                    }
+                }
+            })
+        }   
+        else if(search != "" && searchGroupProduct_name.name != "all product"){
+            product = await prisma.product.findMany({
+                where : {
+                    student_id : {
+                        not : student_id
+                    },
+                    name : {
+                        contains : search
+                    },
+                    groupProduct_id : parseInt(searchGroupProduct)
+                }
+            })
         }
-    })
-    res.render('home',{product_data : product,balance : account.balance})
+        else if(search == "" && searchGroupProduct_name.name != "all product"){
+            product = await prisma.product.findMany({
+                where : {
+                    student_id : {
+                        not : student_id
+                    },
+                    groupProduct_id : parseInt(searchGroupProduct)
+                }
+            })
+        }
+        else{
+            product = await prisma.product.findMany({
+                where : {
+                    student_id : {
+                        not : student_id
+                    },
+                    name : {
+                        contains : search
+                    },
+                }
+            })
+        }
+    }
+    else{
+        product = await prisma.product.findMany({
+            where : {
+                student_id : {
+                    not : student_id
+                }
+            }
+        })
+    }
+    let groupProduct = await prisma.groupProduct.findMany()
+    res.render('home',{product_data : product,balance : account.balance,groupProduct_data : groupProduct})
 })
 
 module.exports = router;

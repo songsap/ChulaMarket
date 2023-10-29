@@ -1,0 +1,153 @@
+<%- include('header') %>
+    <div class="content " style="margin-left: 90px; margin-right: 90px;">
+        <!-- Order status -->
+        <div class="text-center" style="font-size: 40px;">
+            Your Order Status
+        </div>
+        <!-- order number -->
+        <div class="mt-3 px-4 pb-4" style=" border-bottom: 2px solid black;">
+            <div class="d-flex" style="font-size: 20px;">
+                <div class="mr-1">Order:</div>
+                <!-- order number -->
+                <%= order_data.id %>
+            </div>
+            <div class="d-flex" style="font-size: 16px;">
+                <div class="mr-1">From shop:</div>
+                <!-- order date -->
+                <%= order_data.shop_name %>
+            </div>
+        </div>
+        <!-- status -->
+        <div style=" border-bottom: 2px solid black; padding-bottom: 40px;">
+            <div class="d-flex mt-2" style="padding:25px; font-size: 40px;">
+                <div class="mr-2">Status:</div>
+                <!-- status -->
+                <% if(order_data.status =="Order cancelled" ) { %>
+                    <p class="card-text col" style="color: #DC3545;">
+                        <%= order_data.status  %>
+                    </p>
+
+                <% }else if(order_data.status =="Order Confirmed" ) { %>
+                    <p class="card-text col" style="color: #c09a28;">
+                        <%= order_data.status  %>
+                    </p>
+                <% }else{ %>
+                    <p class="card-text col" style="color: #28A745;">
+                        <%= order_data.status  %>
+                    </p>
+                <% }%>
+            </div>
+            <div class="row mb-1">
+                <div class="col-3"></div>
+                <div class="col-4 ">
+                    <h2 style="font-size: 23px;">Product</h2>
+                </div>
+                <div class="col-3 ">
+                    <h2 style="font-size: 23px;">Quantity</h2>
+                </div>
+                <div class=" col-2 ">
+                    <h2 style="font-size: 23px;">Price</h2>
+                </div>
+            </div>
+            <!-- order -->
+            <div class="row" style="justify-content: center;">
+                <!-- total is used to show total prize in below the card-->
+                <% var total = 0; %>
+                    <div class="col-md-12" style="margin: 15px; justify-content:center;">
+                        <div class="card " style="justify-content:center; padding: auto;">
+                            <div class="card-body">
+                                <div class="row ">
+                                    <div class="col-md-3">
+                                        <!--  -->
+                                        <img src="../images/productImage/<%= order_data.productImage %>"
+                                            style="height:230px; max-height: 150px;width: 100%; border-radius: 5px; background-size: cover;  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.35);"
+                                            alt="">
+                                    </div>
+                                    <div class="col-md-4" style="padding-top: 20px;">
+                                        <h5 class="card-title">
+                                            <%= order_data.product_name %>
+                                        </h5>
+                                        <p class="card-text">
+                                            <%= order_data.product_name %>
+                                        </p>
+                                    </div>
+                                    <!-- quantity -->
+                                    <div class="col-md-3 py-4">
+                                        <p class="text" style="padding: 20px; padding-left: 45px;font-size: 25px; padding-top: 25px ;">
+                                            <!--example  -->
+                                            <%= order_data.amount %>
+                                        </p>
+                                    </div>
+                                    <!-- price -->
+                                    <div class="col-md-1 text-center d-flex " style="text-align: center;padding-top: 50px;padding-left: 40px;">
+                                        <p class="text" style="font-size: 25px;">
+                                            <!--example  -->
+                                            <%= order_data.totalprice %> 
+                                        </p>
+                                        <span class="material-symbols-outlined mx-2 custom-icon" style="font-size: 30px;">
+                                            lightbulb
+                                        </span>
+                                        <% total += order_data.totalprice %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+            <!-- detail -->
+            <div>
+                <div class="mt-5 d-flex justify-content-between">
+                    <div class="">
+                        <!-- shipping -->
+                        <div style="font-size: 14px;">Shipping</div>
+                        <div class="" style="font-size: 12px;color: #667085;">
+                            <%= shippingCompany_data.name %>
+                        </div>
+                        <!-- Tracking Number -->
+                        <div style="font-size: 14px;">Tracking Number</div>
+                        <div class="" style="font-size: 12px;color: #667085;">
+                            <%= order_data.track %>
+                        </div>
+                    </div>
+                    <!-- Delivery -->
+                    <div class="">
+                        <div style="font-size: 14px;">Delivery</div>
+                        <!-- payment detail -->
+                        <div style="color: #667085; font-size: 10px;">
+                            Address
+                        </div>
+                        <!-- address -->
+                        <div style="color: #667085; font-size: 12px;">
+                            <%= order_data.address_buyer %>
+                        </div>
+                    </div>
+                    <!-- Order Summary -->
+                    <div class="" style="width: 150px;">
+                        <div style="font-size: 14px; border-bottom: 1px solid #667085;">Order Summary</div>
+                        <!-- detail -->
+                        <div class="d-flex justify-content-between my-2">
+                            <P>Total</P>
+                            <p class="" style="font-size: 18px;">
+                                <%= total %>
+                                <span class="material-symbols-outlined mt-1" style="font-size: 15px;">
+                                    lightbulb
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% if(order_data.status == "Delivering"){ %>
+                <form action="/yourorder/<%= order_data.id %>" method="post">
+                    <button type="submit" class="btn btn-primary  mt-5 " style="float: right; background-color: black;  font-size: 25px; border-radius: 10px; border-color: black;" onfocus="this.blur()">
+                        Received
+                    </button> 
+                </form>
+            <% } %>
+        </div>
+        
+<%- include('footer') %>

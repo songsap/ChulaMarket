@@ -5,20 +5,9 @@ let secretCode = 'cannabisisthebestkey';
 let session = require('express-session');
 var express = require('express');
 var router = express.Router();
+let flash = require('express-flash');
 
-router.use(session({
-  secret: 'cannabisisthebestsession',
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    maxAge : 30 * 24 * 60 * 60 * 1000
-  }
-}))
-
-router.use((req,res,next) => {
-  res.locals.session = req.session;
-  next()
-})
+router.use(flash());
 
 router.get('/signin',  (req,res) => {
   let alertMessage = req.flash('error')

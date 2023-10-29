@@ -2,13 +2,12 @@
     <div style="padding-top: 100px;">
         
     </div>
-    <div style="display: flex;
-    justify-content: center; ">
+    <div style="display: flex; justify-content: center; margin-top: 100px;">
         <!-- old src is "../images/shopImage/"<"%= shop.imageUrl %>"-->
-       <img src="" style="height:230px; max-height: 290px; width: 380px; border-radius: 12px; background-size: cover;" alt="">
+       <img src="../images/shopImage/<%= shop_data.imageUrl %>" style="height:230px; max-height: 290px; width: 380px; border-radius: 12px; background-size: cover;" alt="">
    </div>
-   <h1 class="fw-bold mb-5" style="justify-content: center; margin-top: 30px; padding-bottom: 50px;; text-align: center;">
-    Shop name
+   <h1 class="fw-bold mb-2" style="justify-content: center; margin-top: 30px; text-align: center;">
+        <%= shop_data.name %>
    </h1> 
     <div class="row row-cols-5 row-cols-md-4 g-2"
         style="height: 100%; margin: 50px 130px; grid-gap: 12.5%; position: relative;">

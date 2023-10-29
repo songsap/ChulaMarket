@@ -1,0 +1,80 @@
+<%- include("header") %>
+    <div style="padding-top: 250px;">
+        <h1 class="fw-bold mb-5" style="text-align: center;"><b>Your Order</b></h1>
+        <div style="padding: 50px;">
+            <p style="padding-left: 100px; font-size:20px">
+                <b>Order</b> <br>
+                <% if(order_data.length==0) { %>
+                    You have no order in your shop
+                <% }else if (order_data.length==1) { %>
+                    You have <%= order_data.length %> order in your shop
+                <% }else { %>
+                    You have <%= order_data.length %> orders in your shop
+                <% } %>
+
+        </div>
+        <!-- Assuming you have an array of orders called 'orders' -->
+        <div class="row" style="justify-content: center;">
+            <% order_data.forEach((order)=> { %>
+                <div class="col-md-8" style="margin: 15px; justify-content:center;">
+                    <!-- order status here-->
+                    <a href="/yourshop/shopOrder/<%= order.id %>" style="text-decoration: none; color: #000000;">
+                        <div class="card " style="justify-content:center; padding: auto;">
+                            <div class="card-body">
+                                <div class="row ">
+                                    <div class="col-md-3">
+                                        <img src="/images/productImage/<%= order.productImage %>" style="height:230px; max-height: 150px;width: 100%; border-radius: 5px; background-size: cover;  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.35);" alt="">
+                                    </div>
+                                    <div class="col-md-4" style="padding-top: 20px;">
+                                        <h5 class="card-title">
+                                            <b><%= order.shop_name %></b> : <%= order.product_name %>
+                                        </h5>
+                                        <p class="card-text">
+                                            <div class="row" style="text-align: left;">
+                                                <p class="col-md-4">Status : </p>
+                                                <!-- if case w/ color-->
+                                                <% if(order.status=="Order cancelled" ) { %>
+                                                    <p class="card-text col" style="color: #DC3545;">
+                                                        <%= order.status %>
+                                                    </p>
+                        
+                                                <% }else if(order.status=="Order Confirmed" ) { %>
+                                                    <p class="card-text col" style="color: #c09a28;">
+                                                        <%= order.status %>
+                                                    </p>
+                                                <% }else{ %>
+                                                    <p class="card-text col" style="color: #28A745;">
+                                                        <%= order.status %>
+                                                    </p>
+                                                <% }%>
+                                            </div>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <p class="text" style="padding: 20px;">
+                                            <%= order.amount %>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2" style="text-align: right;">
+                                        <p class="text" style="padding: 20px;">
+                                            <%= order.totalprice %> 
+                                            <span class="material-symbols-outlined material-icons">
+                                                lightbulb
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            <% }) %>
+        <div class="col-md-8 justify-content-right" style="margin: 15px;">
+            <div class="mt-5 d-flex justify-content-between">
+            <div>
+            </div>
+                <!-- Order Summary -->
+        </div>
+    </div>

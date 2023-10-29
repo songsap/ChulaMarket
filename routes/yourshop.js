@@ -383,4 +383,100 @@ router.get('/deleteProduct/:id',isSignin, async (req,res) => {
         throw err
     }
 })
+
+router.get('/shopOrder',isSignin, async(req,res) => {
+    try{
+        let user = jwt.verify(req.session.token,secretCode)
+        let student = await prisma.user.findUnique({
+            where : {
+                id : user.id
+            }
+        })
+        let student_id = student.student_id
+        let account = await prisma.account.findFirst({
+            where : {
+                student_id : student_id
+            }
+        })
+        let order = await prisma.order.findMany({
+            where : {
+                student_id_seller : student_id
+            }
+        })
+        res.render('shop_order_list',{order_data : order,balance : account.balance})
+    } catch(err) {
+        throw err
+    }
+})
+
+router.get('/shopOrder/:id',isSignin, async(req,res) => {
+    try{
+        let user = jwt.verify(req.session.token,secretCode)
+        let student = await prisma.user.findUnique({
+            where : {
+                id : user.id
+            }
+        })
+        let student_id = student.student_id
+        let account = await prisma.account.findFirst({
+            where : {
+                student_id : student_id
+            }
+        })
+        let order = await prisma.order.findUnique({
+            where : {
+                id : parseInt(req.params.id)
+            }
+        })
+        let shippingCompany = await prisma.groupShippingCompany.findMany()
+        let shippingCompanySelectedName = await prisma.groupShippingCompany.findUnique({
+            where : {
+                id : order.shippingCompany_id
+            }
+        })
+        let product = await prisma.product.findUnique({
+            where : {
+                id : order.product_id
+            }
+        })
+        //res.send('kuay')
+        res.render('shop_order_status',{order_data : order,balance :account.balance,shippingCompany_data : shippingCompany,product_data : product,shippingCompanySelectedName : shippingCompanySelectedName.name})
+    } catch(err) {
+        console.log(err)
+        throw err
+    }
+})
+
+router.post('/shopOrder/:id',isSignin, async (req,res) => {
+    try{
+        let user = jwt.verify(req.session.token,secretCode)
+        let student = await prisma.user.findUnique({
+            where : {
+                id : user.id
+            }
+        })
+        let student_id = student.student_id
+        let account = await prisma.account.findFirst({
+            where : {
+                student_id : student_id
+            }
+        })
+        let shippingCompany = req.body.shipping
+        let track = req.body.track
+        order = await prisma.order.update({
+            where : {
+                id : parseInt(req.params.id)
+            },
+            data : {
+                status : "Delivering",
+                track : track,
+                shippingCompany_id : parseInt(shippingCompany)
+            }
+        })
+        res.redirect('/yourshop/shopOrder')
+    } catch(err) {
+        throw err
+    }
+}) 
+
 module.exports = router;

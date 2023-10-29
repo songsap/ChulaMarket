@@ -1,12 +1,32 @@
 <%- include('header') %>
 <div style="padding-top: 200px;">
+    <!-- Ta code here-->
+    <div class="row justify-content-center">
+        <div class="d-flex flex-row mb-3" style="justify-content: center; gap: 40px; width: 100%;">
+            <form class="d-flex" method="get" action="/home/">
+                <input name="search" type="text" class="form-control" placeholder="Search" style="width: 400px; height: 100%;">
+                <select id="Product Category" name="groupProduct_id" class="form-control" style="margin-left: 10px; font-size: 25px; height: 100%; width: 200px; border-radius: 10px; border-color: black;" >
+                    <!--//TODO loop -->
+                    <% groupProduct_data.forEach((groupProduct) => { %>
+                        <option value="<%= groupProduct.id %>" class="" style=" font-size: 25px;height: 80px; border-radius: 10px; border-color: black;">
+                        <%= groupProduct.name %>
+                        </option>
+                    <% }) %>
+                </select>
+                <button type="submit" class="btn btn-outline-info" style="width: 100px; ; border-radius: 10px; margin-left: 10px;">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <!--END-->
+
     <div class="row row-cols-5 row-cols-md-4 g-2"
-        style="height: 100%; margin: 50px 130px; justify-content:space-between; grid-gap: 30px; position: relative;">
+        style="height: 100%; margin: 50px 130px; justify-content:left; grid-gap: 12.5%; position: relative; ">
             <% product_data.forEach((product) => { %>
-                <div class="card h-100 w-290 " style="width: 290px; padding: 5px; z-index: 1; border: 0;">
+                <div class="card h-100 w-290 " style="width: 290px; padding: 5px; z-index: 1; border: 0; margin-bottom: 80px;">
                     <!-- Product img -->
                     <div style=" justify-self: center;">
-                        <img src="../images/productImage/<%= product.imageUrl %>" style="height:230px; max-height: 290px;width: 100%; border-radius: 12px; background-size: cover;" alt="">
+                        <img src="../images/productImage/<%= product.imageUrl %>" style="height:230px; max-height: 290px;width: 100%; border-radius: 12px; background-size: cover;box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.35);" alt="">
                     </div>
                     <!-- Shop name (link)-->
                     <h2 class="card-title">
