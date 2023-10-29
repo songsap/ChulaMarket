@@ -219,7 +219,13 @@ router.get('/addproduct',isSignin, async (req,res) => {
                 student_id : student_id
             }
         })
-        let groupProduct = await prisma.groupProduct.findMany()
+        let groupProduct = await prisma.groupProduct.findMany({
+            where : {
+                name : {
+                    not : "all product"
+                }
+            }
+        })
         res.render('add_product',{product_data : {},groupProduct_data : groupProduct,balance : account.balance})
     } catch(err){
         throw err

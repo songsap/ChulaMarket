@@ -123,4 +123,11 @@ router.get('/logout',isSignin, async(req,res) => {
   res.redirect('/auth/signin')
 })
 
+router.get('/aboutus', (req,res) => {
+  res.render('aboutus')
+})
+
+router.get('/contactus/', (req,res) => {
+  res.render('contactus')
+})
 module.exports = [router,isSignin];
