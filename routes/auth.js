@@ -30,7 +30,7 @@ router.post('/signin', async (req,res) => {
     }
     if(user.password != password){
       //res.status(401).send('Username or password invalid');
-      req.flash('error', 'Student id or password invalid');
+      req.flash('error', 'password wrong');
       res.redirect(`/auth/signin`)
       return;
     }

@@ -79,7 +79,7 @@ router.get('/registerShop',isSignin, async (req,res) => {
 })
 
 let shopImageStorage = multer.diskStorage({
-    destination: 'C://Users/USER/Desktop/10dayproject/cu_market/app/public/images/shopImage/',
+    destination: 'C://Users/Admin/Desktop/10dayproject/cu_market/ChulaMarket/public/images/shopImage/',
     filename: (req, file, cb) => {
       cb(null, file.originalname);
     },
@@ -233,7 +233,7 @@ router.get('/addproduct',isSignin, async (req,res) => {
 })
 
 let productImageStorage = multer.diskStorage({
-    destination: 'C://Users/USER/Desktop/10dayproject/cu_market/app/public/images/productImage/',
+    destination: 'C://Users/Admin/Desktop/10dayproject/cu_market/ChulaMarket/public/images/productImage/',
     filename: (req, file, cb) => {
       cb(null, file.originalname);
     },
@@ -373,7 +373,7 @@ router.get('/deleteProduct/:id',isSignin, async (req,res) => {
                 id : parseInt(req.params.id)
             }
         })
-        let path = 'C://Users/USER/Desktop/10dayproject/cu_market/app/public/images/productImage/' + product.imageUrl;
+        let path = 'C://Users/Admin/Desktop/10dayproject/cu_market/ChulaMarket/public/images/productImage/' + product.imageUrl;
         fs.unlink(path,(err) => {
             if(err){
                 throw err

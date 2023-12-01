@@ -4,7 +4,7 @@
         <div class="alert alert-danger text-center">
             <%= alertMessage %>
         </div>
-    <% } %>
+        <% } %>
      <div class="row">
         <div class="col-md-4 offset-md-4 centered-box ">
             <div class="d-flex justify-content-between">
@@ -16,30 +16,28 @@
             <div class="my-3">
                 <!-- Add space here -->
             </div>
-            <div class="row d-flex ">
-                <div class="col-lg-8">  
+            <div class="">
                   <form action="/auth/signin" method="post">
                     <!-- 2 column grid layout with text inputs for the first and last names -->
                     <div class="row mt-5 " >
                       <!-- student id input $student_id -->
-                      <div class="form-outline mb-4">
+                      <div class="mb-4 col-md-12 mb-4">
                           <div class="form-outline">
                               <label class="form-label ml-2" for="student_id">Student id</label>
-                              <input type="text" name="student_id" class="form-control " placeholder="Student id" style="width: 451px; height: 57px; border-radius: 10px; border-color: black;" />
+                              <input type="text" name="student_id" class="form-control " placeholder="Student id" style=" height: 57px; border-radius: 10px; border-color: black; " />
                           </div>
                       </div>
                     <!-- Password input $password-->
-                    <div class="form-outline mb-3" >
+                    <div class="mb-3 col-md-12 mb-4" >
                         <label class="form-label ml-2" for="password">Password</label>
-                        <input type="password" name="password" class="form-control" placeholder="password" style="width: 451px; height: 57px; border-radius: 10px; border-color: black;" />
+                        <input type="password" name="password" class="form-control" placeholder="password" style=" height: 57px; border-radius: 10px; border-color: black; " />
                     </div> 
                     </div>
                     <!-- Submit button -->
-                    <button type="submit" class="btn btn-primary btn-block mt-4" style="background-color: #565959; width: 435px; height: 54px; font-size: 16px; border-radius: 10px; border-color: black;">
+                    <button type="submit" class="btn btn-primary btn-block mt-4" style="background-color: #565959;  height: 54px; font-size: 16px; border-radius: 10px; border-color: black; align-items: center;"onfocus="this.blur()">
                         Sign in
                     </button> 
-                  </form>
-                </div>               
+                  </form>            
             </div>  
             <!-- <div class="text-right  mb-5">
                 <a href="" class=" text-right text-dark ml-auto mb-4 text-decoration-none">Forget Password</a>

@@ -129,11 +129,7 @@ router.post('/productdetail/:id',isSignin ,async (req,res) => {
                 shippingCompany_id : 1
             }
         })
-        console.log(order)
-        //res.send('kuay')
         req.flash('success', 'buying success');
-        //res.redirect(`/order/`)
-        //res.redirect(`/product/productdetail/2`)
         res.redirect(`/product/productdetail/${req.params.id}`);
     } catch(err) {
         console.error(err);
